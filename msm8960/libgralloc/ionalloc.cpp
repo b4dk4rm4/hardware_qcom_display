@@ -123,9 +123,9 @@ int IonAlloc::alloc_buffer(alloc_data& data)
     fd_data.handle = ionAllocData.handle;
     handle_data.handle = ionAllocData.handle;
 #ifdef OLD_ION_API
-    if(ioctl(mIonFd, ION_IOC_MAP, &fd_data))
-#else
     if(ioctl(iFd, ION_IOC_MAP, &fd_data))
+#else
+    if(ioctl(mIonFd, ION_IOC_MAP, &fd_data))
 #endif
     {
         err = -errno;
